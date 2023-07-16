@@ -1,0 +1,113 @@
+﻿<Window x:Class="EG_2020_4069.View.AddUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EG_2020_4069"
+        
+        
+        mc:Ignorable="d"
+         Title="{Binding Title,UpdateSourceTrigger=PropertyChanged}" Height="450" Width="900"
+        
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <local:AddUserVM/>
+    </Window.DataContext>
+
+
+    <Grid>
+        <Border CornerRadius="0" BorderThickness="0">
+
+            <Border>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                        <GradientStop Color="#68fbe9" Offset="0.95" />
+                        <GradientStop Color="#9afcf1" Offset="0.8" />
+                        <GradientStop Color="#dffbf8" Offset="0.25" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="25" Color="Black" Opacity="0.7" BlurRadius="10" Direction="45"/>
+            </Border.Effect>
+
+            <Border.BorderBrush>
+                <SolidColorBrush Color="Black"/>
+            </Border.BorderBrush>
+
+        </Border>
+        
+        <Grid>
+       
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Content for the second part (smaller) -->
+            <Grid Grid.Row="1" Background="Transparent">
+                <TextBlock Foreground="Black" FontSize="50" Margin="0 30 0 10" Text="{Binding Title,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Titletext}"/>
+            </Grid>
+
+            <!-- Content for the third part (larger) -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Left part (smaller) -->
+                <Grid Grid.Column="0" Background="Transparent">
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Margin="0 80 0 0" Height="120" VerticalAlignment="Top" Width="120" Source="/Model/Images/1.png"/>
+                        <Image Margin="0 17 0 0" Height="120"  Width="120" Source="{Binding SelectedImage}" />
+                        <Button Margin="0 222 0 0" Height="40" Width="242" HorizontalAlignment="Center" Content="insert picture" Command="{Binding UploadPhotoCommand}" Style="{StaticResource Button }"/>
+                    </Grid>
+                </Grid>
+
+                <!-- Right part (larger) -->
+                <Grid Grid.Column="1" Background="Transparent">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="20 60 0 0" Text="First Name:" Style="{StaticResource NormalText3 }"/>
+                            <TextBox VerticalContentAlignment="Center" Margin="0 30 0 0" Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource BoxText3 }"/>
+                            <TextBlock Margin="40 60 0 0" Text="Last Name:" Style="{StaticResource NormalText3 }"/>
+                            <TextBox VerticalContentAlignment="Center" Margin="0 30 0 0" Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource BoxText3 }"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
+                            <TextBlock Margin="20 10 0 0" Text="DateOfBirth:" Style="{StaticResource NormalText3 }"/>
+                            <TextBox VerticalContentAlignment="Center" Margin="0 0 0 20" Text="{Binding Dateofbirth, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource BoxText3 }"/>
+                            <TextBlock Margin="45 25 0 20" Width="50" Text="Age:" Style="{StaticResource NormalText3 }"/>
+                            <TextBox VerticalContentAlignment="Center" Margin="47 0 0 20" Width="50" Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource BoxText3 }"/>
+
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
+                            <TextBlock Margin="20 25 0 20" Width="50" Text="GPA" Style="{StaticResource NormalText3 }"/>
+                            <TextBox VerticalContentAlignment="Center" Margin="50 0 0 20" Width="100" Text="{Binding Gpa, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource BoxText3 }"/>
+                            <Button Margin="190 -20 0 0" Height="40" Width="150" Content="Save" Command="{Binding SaveCommand}" Style="{StaticResource ButtonText3 }"/>
+
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</Window>
